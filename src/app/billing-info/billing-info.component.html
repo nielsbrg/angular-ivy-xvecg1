@@ -1,0 +1,29 @@
+<div class="container">
+  <form [formGroup]="nestedForm" (ngSubmit)="onSubmit()">
+    <app-basic-info formControlName="basicInfo"></app-basic-info>
+    <app-address-info formControlName="address"></app-address-info>
+
+    <button type="submit" [disabled]="!nestedForm.valid">submit</button>
+    <button type="reset" (click)="onReset()">reset</button>
+    <button type="button" (click)="setbasicinfo()">set basic info</button>
+    <button type="button" (click)="setaddress()">set address</button>
+    <button type="button" (click)="patch()">PATCH ALL</button>
+    <button type="button" (click)="disable()">DISABLE</button>
+    <button type="button" (click)="enable()">ENABLE</button>
+  </form>
+</div>
+
+<div>
+  <h3>form value: </h3>
+  <pre>{{ nestedForm.value | json }}</pre>
+</div>
+
+<div>
+  <h3>validation errors:</h3>
+  <pre>{{ formErrors$ | async | json }}</pre>
+</div>
+
+<div>
+  <h3>VALID:</h3>
+  <pre>{{ formStatus$ | async | json }}</pre>
+</div>
